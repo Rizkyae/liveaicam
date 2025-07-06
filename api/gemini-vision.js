@@ -42,7 +42,7 @@ module.exports = async (req, res) => {
             ];
 
             // Tambahkan instruksi eksplisit ke prompt agar AI merespons dalam Bahasa Indonesia
-            const promptBahasaIndonesia = `Jawab dalam Bahasa Indonesia. ${prompt}`;
+            const promptBahasaIndonesia = `Jawab dalam Bahasa Indonesia dengan gaya bahasa yang santai/gaul, seolah sedang ngobrol sama temen. Gunakan tanda bintang ganda (**) untuk membuat kata atau frasa penting menjadi tebal. ${prompt}`;
 
             // Panggil API Gemini
             const result = await model.generateContent([promptBahasaIndonesia, ...imageParts]);
