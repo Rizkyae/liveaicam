@@ -106,8 +106,8 @@ captureButton.addEventListener('click', async () => {
 
         const data = await res.json();
         // Pastikan 'data.text' ada dan merupakan string
-        if (data && typeof data.text === 'string') {
-            const aiResponseText = data.text;
+        if (data && typeof data.geminiResponse === 'string') {
+            const aiResponseText = data.geminiResponse;
             responseDiv.innerHTML = `<h3>Respons RIZKY AI:</h3><p>${aiResponseText}</p>`;
 
             // --- Fitur Text-to-Speech ---
