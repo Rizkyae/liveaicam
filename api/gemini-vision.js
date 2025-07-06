@@ -1,7 +1,7 @@
 // api/gemini-vision.js
 
 // [OPSIONAL] Hapus ini jika Anda mengatur variabel lingkungan di Vercel Dashboard
-require('dotenv').config(); // <-- Pertahankan untuk pengembangan lokal, tapi tidak diperlukan di Vercel prod.
+// require('dotenv').config(); // <-- Bisa dipertahankan untuk pengembangan lokal.
 
 const { GoogleGenerativeAI } = require('@google/generative-ai');
 
@@ -13,6 +13,7 @@ module.exports = async (req, res) => {
         const { image, prompt } = req.body; // Ambil data langsung dari req.body
 
         if (!image || !prompt) {
+            // Mengembalikan error jika data yang dibutuhkan tidak lengkap
             return res.status(400).json({ error: 'Gambar (image) dan prompt diperlukan.' });
         }
 
@@ -20,11 +21,12 @@ module.exports = async (req, res) => {
             // Inisialisasi Gemini API (pastikan GEMINI_API_KEY diatur di Vercel Environment Variables)
             const API_KEY = process.env.GEMINI_API_KEY;
             if (!API_KEY) {
+                // Mengembalikan error jika API Key tidak ditemukan
                 return res.status(500).json({ error: "API Key is not configured in Vercel Environment Variables." });
             }
 
             const genAI = new GoogleGenerativeAI(API_KEY);
-            const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" }); // Model sudah benar
+            const model = genAI.getGenerativeModel({ model: "gemini-pro-vision" });
 
             // Pastikan Anda memproses 'image' dari frontend
             // Asumsi 'image' adalah base64 string dengan atau tanpa prefix "data:image/jpeg;base64,"
