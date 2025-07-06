@@ -26,7 +26,7 @@ module.exports = async (req, res) => {
             }
 
             const genAI = new GoogleGenerativeAI(API_KEY);
-            const model = genAI.getGenerativeModel({ model: "gemini-pro-vision" });
+            const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
 
             // Pastikan Anda memproses 'image' dari frontend
             // Asumsi 'image' adalah base64 string dengan atau tanpa prefix "data:image/jpeg;base64,"
