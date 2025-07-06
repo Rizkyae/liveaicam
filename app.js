@@ -86,7 +86,7 @@ captureButton.addEventListener('click', async () => {
     captureButton.disabled = true; // Nonaktifkan tombol saat memproses
 
     try {
-        const serverEndpoint = 'http://localhost:3000/gemini-vision'; // Pastikan ini benar
+        const serverEndpoint = '/api/gemini-vision'; // Pastikan ini benar
 
         const res = await fetch(serverEndpoint, {
             method: 'POST',
